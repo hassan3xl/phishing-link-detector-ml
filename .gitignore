@@ -42,17 +42,17 @@ htmlcov/
 # --- Project-specific: large/raw data and model artifacts ---
 # Raw source dataset is large and reproducibly downloadable; not committed.
 data/raw/
-# Trained model binaries are reproducible via `python -m src.models.train`
-# and kept out of git history to avoid bloating it; small JSON result/metric
-# files (e.g. comparison_results.json) ARE committed since they document
-# actual results and cost nothing. Exception: final_model.joblib (the one
-# Phase 5 actually selected, 617KB) IS committed - it's what Phase 7's API
-# loads, and a fresh checkout/CI run should be able to serve predictions
-# without first re-running the full training pipeline.
+# Trained model binaries are large (>100MB) and reproducible via `python -m src.models.train_augmented`.
+# They are kept out of git history to avoid repository bloat and GitHub file size limits.
+# Small JSON result/metric files and folder structure (.gitkeep) ARE committed.
 models_saved/*.joblib
 models_saved/*.pkl
-!models_saved/final_model.joblib
+models_saved/*.pickle
+*.joblib
+*.pkl
+*.pickle
 !models_saved/.gitkeep
+!models_saved/*.json
 
 # Prediction logs written by the API at runtime (not source-controlled).
 logs/

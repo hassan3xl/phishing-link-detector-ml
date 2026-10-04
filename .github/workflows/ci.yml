@@ -27,6 +27,9 @@ jobs:
         run: |
           uv pip install --system -r requirements-api.txt pytest httpx
 
+      - name: Train model artifact
+        run: python -m src.models.train_augmented
+
       - name: Run tests
         run: pytest tests/ -v
 
@@ -35,6 +38,19 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      - name: Train model for container packaging
+        run: |
+          uv pip install --system -r requirements-api.txt
+          python -m src.models.train_augmented
 
       - name: Build Docker image
         run: docker build -t phishing-detection-ml:ci .

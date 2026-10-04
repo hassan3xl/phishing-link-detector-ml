@@ -274,8 +274,8 @@ phishing-detection-ml/
 - [`src/models/train.py`](file:///home/hasan/Documents/phishing-detection-ml/src/models/train.py): **The Training Script.** Trains and compares multiple ML algorithms (Logistic Regression, Random Forest, and XGBoost) using cross-validation and hyperparameter tuning.
 - [`src/models/train_augmented.py`](file:///home/hasan/Documents/phishing-detection-ml/src/models/train_augmented.py): **Augmented Retraining.** Retrains the Random Forest with realistic deep-linked paths to improve real-world web generalization.
 - [`src/models/select_final.py`](file:///home/hasan/Documents/phishing-detection-ml/src/models/select_final.py): **The Model Selector.** Chooses the champion model, packages it, and writes out the production metadata.
-- [`models_saved/final_model.joblib`](file:///home/hasan/Documents/phishing-detection-ml/models_saved/final_model.joblib): **The Trained Brain File.** The actual serialized binary containing the trained decision trees loaded by `main.py`.
-- [`models_saved/final_model_metadata.json`](file:///home/hasan/Documents/phishing-detection-ml/models_saved/final_model_metadata.json): **Model Configuration & Specs.** Records the active model architecture, hyperparameters, decision threshold, and test accuracy statistics.
+- [`models_saved/final_model.joblib`](file:///home/hasan/Documents/phishing-detection-ml/models_saved/final_model.joblib): **The Trained Brain File.** The serialized binary containing the trained decision trees loaded by `main.py`. *(Excluded from git to avoid repository bloat and GitHub's 100MB limit; anyone can reproduce it in ~1 minute by running `python -m src.models.train_augmented`)*.
+- [`models_saved/final_model_metadata.json`](file:///home/hasan/Documents/phishing-detection-ml/models_saved/final_model_metadata.json): **Model Configuration & Specs.** Records the active model architecture, hyperparameters, decision threshold, and test accuracy statistics *(tracked in git)*.
 
 #### 📊 Datasets & Data Pipelines (`src/data/` & `data/`)
 
@@ -568,9 +568,17 @@ Other, secondary limitations (see also the individual caveats already noted inli
 - **Zero Train/Serve Skew**: Reuses `extract_features` from `src.features.extract` unchanged.
 - **Detailed Empirical Study**: See [`docs/RANDOM_FOREST_STUDY.md`](docs/RANDOM_FOREST_STUDY.md) for the in-depth Random Forest empirical evaluation, confusion matrix, feature importance analysis, and literature comparison.
 
+> [!NOTE]
+> **Trained Model Artifact:** Heavy model binaries (`.joblib`, 164MB) are kept out of GitHub to prevent repository bloat and comply with GitHub file size restrictions. Because the training datasets are included in the repository, anyone can train the exact production model locally in ~1 minute:
+> ```bash
+> python -m src.models.train_augmented
+> ```
+> This generates `models_saved/final_model.joblib` and prepares the server and test suite for execution.
+
 **Run with Docker** (recommended — this is what's tested end-to-end):
 
 ```bash
+python -m src.models.train_augmented   # Ensure model artifact is generated first
 docker build -t phishing-detection-ml .
 docker run -d --name phishing-api -p 8000:8000 phishing-detection-ml
 ```
@@ -716,7 +724,7 @@ phishing-detection-ml/
       prediction_log.py        # JSONL prediction logging for drift monitoring
       static/index.html         # Interactive web interface with live risk bar & feature table
   tests/                        # Phase 8: 34 pytest tests (features, model, API, lambda handler)
-  models_saved/                 # final_model.joblib + metadata committed; candidate checkpoints
+  models_saved/                 # final_model_metadata.json committed; .joblib binaries gitignored (reproducible)
   .github/workflows/ci.yml       # Phase 8: test + docker-build jobs on every push/PR
   terraform/                    # Phase 10: AWS Lambda, API Gateway & ECR infrastructure as code
   Dockerfile, Dockerfile.lambda # Container build recipes (local/ECS and AWS Lambda)
