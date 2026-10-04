@@ -27,7 +27,11 @@ TRAIN_IN = Path("data/train.csv")
 ORIGINAL_TRAIN_FEATURES = Path("data/train_features.csv")
 AUGMENTED_FEATURES_OUT = Path("data/train_augmented_features.csv")
 
+TEST_IN = Path("data/test.csv")
+ORIGINAL_TEST_FEATURES = Path("data/test_features.csv")
+
 NUM_AUGMENTED_SAMPLES = 50000
+NUM_TEST_TARGET = 50000
 RANDOM_STATE = 42
 
 random.seed(RANDOM_STATE)
@@ -106,7 +110,7 @@ def generate_realistic_path() -> str:
         return f"/{section}"
 
 
-def main():
+def augment_training_set():
     print(f"[load] reading original training set from {TRAIN_IN}...")
     df_raw = pd.read_csv(TRAIN_IN)
     legit_urls = df_raw[df_raw["label"] == 1]["URL"].tolist()
@@ -118,9 +122,8 @@ def main():
     print(f"[augment] generating {NUM_AUGMENTED_SAMPLES} realistic deep-linked URLs...")
     augmented_rows = []
 
-    for i, base_url in enumerate(tqdm(sampled_domains, desc="Generating features")):
+    for i, base_url in enumerate(tqdm(sampled_domains, desc="Generating train features")):
         # Alternate between apex domain (without www.) and standard (with www.)
-        # to teach trees that bare apex domains are completely normal
         clean_base = base_url.rstrip("/")
         if i % 2 == 0 and "://www." in clean_base:
             clean_base = clean_base.replace("://www.", "://")
@@ -148,6 +151,81 @@ def main():
     AUGMENTED_FEATURES_OUT.parent.mkdir(parents=True, exist_ok=True)
     df_combined.to_csv(AUGMENTED_FEATURES_OUT, index=False)
     print(f"[save] saved combined dataset to {AUGMENTED_FEATURES_OUT}")
+
+
+def augment_test_set(target_count: int = NUM_TEST_TARGET):
+    """Expands data/test.csv and data/test_features.csv to target_count (default: 50,000)
+
+    by synthesizing realistic deep-linked URLs strictly from held-out test domains.
+    Zero data leakage is preserved: only domains already inside data/test.csv are used.
+    """
+    print(f"\n[test] reading held-out test set from {TEST_IN}...")
+    df_test_raw = pd.read_csv(TEST_IN)
+    current_count = len(df_test_raw)
+    needed = target_count - current_count
+
+    if needed <= 0:
+        print(f"[test] test set already has {current_count} samples (>= {target_count}). Nothing to add.")
+        return
+
+    legit_test_urls = df_test_raw[df_test_raw["label"] == 1]["URL"].tolist()
+    print(f"[test] found {len(legit_test_urls)} legitimate test domains.")
+    print(f"[test] generating {needed} realistic deep-linked URLs from test domains (strictly zero leakage)...")
+
+    # Use independent random generator for test split
+    rng = random.Random(RANDOM_STATE + 100)
+    sampled_domains = rng.choices(legit_test_urls, k=needed)
+
+    new_urls = []
+    new_features = []
+
+    for i, base_url in enumerate(tqdm(sampled_domains, desc="Generating test features")):
+        clean_base = base_url.rstrip("/")
+        if i % 2 == 0 and "://www." in clean_base:
+            clean_base = clean_base.replace("://www.", "://")
+
+        path = generate_realistic_path()
+        aug_url = clean_base + path
+
+        new_urls.append({"URL": aug_url, "label": 1})
+
+        f = extract_features(aug_url)
+        f["label"] = 1
+        new_features.append(f)
+
+    # 1. Update data/test.csv
+    df_new_urls = pd.DataFrame(new_urls)
+    df_test_combined = pd.concat([df_test_raw, df_new_urls], ignore_index=True)
+    df_test_combined.to_csv(TEST_IN, index=False)
+    print(f"[test] updated {TEST_IN}: {current_count} -> {len(df_test_combined)} rows.")
+
+    # 2. Update data/test_features.csv
+    df_orig_features = pd.read_csv(ORIGINAL_TEST_FEATURES)
+    df_new_features = pd.DataFrame(new_features)
+    df_features_combined = pd.concat([df_orig_features, df_new_features[FEATURE_NAMES + ["label"]]], ignore_index=True)
+    df_features_combined.to_csv(ORIGINAL_TEST_FEATURES, index=False)
+    print(f"[test] updated {ORIGINAL_TEST_FEATURES}: {len(df_orig_features)} -> {len(df_features_combined)} rows.")
+    print(f"[test] class distribution in augmented test set (N = {len(df_features_combined)}):")
+    print(df_features_combined["label"].value_counts())
+    print(df_features_combined["label"].value_counts(normalize=True))
+
+
+def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Augment training and test sets with realistic deep-linked URLs.")
+    parser.add_argument("--test", action="store_true", help="Augment held-out test set to 50,000 samples")
+    parser.add_argument("--train", action="store_true", help="Augment training set with 50,000 deep links")
+    parser.add_argument("--all", action="store_true", help="Augment both training and test sets")
+    args = parser.parse_args()
+
+    if args.all:
+        augment_training_set()
+        augment_test_set()
+    elif args.test:
+        augment_test_set()
+    else:
+        augment_training_set()
 
 
 if __name__ == "__main__":

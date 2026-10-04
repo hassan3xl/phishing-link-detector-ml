@@ -15,14 +15,14 @@
     "augmented_samples": 50000
   },
   "test_metrics": {
-    "accuracy": 0.99144,
-    "precision": 0.99904,
+    "accuracy": 0.99156,
+    "precision": 0.99808,
     "recall": 0.9809,
-    "f1": 0.98989,
-    "roc_auc": 0.99815,
+    "f1": 0.98941,
+    "roc_auc": 0.9979,
     "confusion_matrix": {
-      "tn": 26951,
-      "fp": 19,
+      "tn": 29858,
+      "fp": 38,
       "fn": 384,
       "tp": 19720
     }
@@ -48,5 +48,5 @@
   ],
   "threshold": 0.5,
   "positive_class": "phishing (label=0)",
-  "selection_rationale": "Random Forest v2 trained on 238,296 samples with 50,000 legitimate deep-link augmentations, resolving the PhiUSIIL zero-path generalization failure while maintaining 99.14% accuracy and 99.90% precision."
+  "selection_rationale": "Random Forest v2 trained on 238,296 samples with 50,000 legitimate deep-link augmentations, resolving the PhiUSIIL zero-path generalization failure while maintaining 99.16% accuracy and 99.81% precision."
 }

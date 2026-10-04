@@ -303,18 +303,22 @@ To eliminate the PhiUSIIL zero-path representation bias and provide genuine real
   - News & blog archives (`/news/{year}/{month}/{slug}.html`)
   - Query parameters & pagination (`/search?q={query}&page={page}`)
   - Apex domain & subdomain balance (50% bare apex domains, 50% `www.` subdomains).
-- **Resulting Dataset:** Total training instances expanded from **188,296** to **238,296 URLs**.
+  - Apex domain & subdomain balance (50% bare apex domains, 50% `www.` subdomains).
+- **Resulting Datasets:**
+  - **Training instances:** Expanded from **188,296** to **238,296 URLs** (+50,000 synthetic deep links).
+  - **Held-out test instances:** Expanded from **47,074** to **50,000 URLs** (+2,926 deep links synthesized strictly from held-out test domains, preserving zero data leakage).
 
 ### 8.2 Model Comparison (Ablation Analysis)
 
-| Evaluation Metric | Baseline Random Forest (PhiUSIIL Only) | **Augmented Random Forest v2 (238k Samples)** |
+| Evaluation Metric | Baseline Random Forest (PhiUSIIL Only) | **Augmented Random Forest v2 (238k Train / 50k Test)** |
 | :--- | :---: | :---: |
 | **Training Sample Size** | 188,296 URLs | **238,296 URLs (+50k deep links)** |
-| **Held-Out Test Accuracy** | 99.71% | **99.14%** |
-| **Test Precision (Phishing)** | 99.91% | **99.90%** |
+| **Held-Out Test Sample Size** | 47,074 URLs | **50,000 URLs (+2,926 test deep links)** |
+| **Held-Out Test Accuracy** | 99.71% | **99.16%** |
+| **Test Precision (Phishing)** | 99.91% | **99.81%** |
 | **Test Recall (Phishing)** | 99.41% | **98.09%** |
-| **Test F1-Score** | 99.66% | **98.99%** |
-| **Test ROC-AUC** | 0.99820 | **0.99815** |
+| **Test F1-Score** | 99.66% | **98.94%** |
+| **Test ROC-AUC** | 0.99820 | **0.99790** |
 | **`count_slashes_path` Gini Weight** | **27.16%** *(Overfit bias)* | **7.80%** *(Balanced)* |
 | **`tld_risk_flag` Gini Weight** | 7.43% | **12.50%** |
 | **`is_https` Gini Weight** | 40.33% | **38.44%** |

@@ -88,7 +88,7 @@ def main():
     tn, fp, fn, tp = cm.ravel()
 
     print("\n" + "=" * 65)
-    print("HELD-OUT TEST SET METRICS (N = 47,074, Phishing = Positive Class)")
+    print(f"HELD-OUT TEST SET METRICS (N = {len(df_test):,}, Phishing = Positive Class)")
     print("=" * 65)
     print(f"Accuracy:         {acc:.5f} ({acc * 100:.2f}%)")
     print(f"Precision:        {prec:.5f} ({prec * 100:.2f}%)")
