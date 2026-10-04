@@ -1,0 +1,299 @@
+{
+  "base_rate": 0.4271,
+  "min_support": 50,
+  "min_lift": 1.3,
+  "keywords": [
+    "confirmation",
+    "validate",
+    "authenticate",
+    "login",
+    "verify",
+    "confirm",
+    "signin",
+    "verification",
+    "account",
+    "update",
+    "secure",
+    "support",
+    "customer",
+    "banking",
+    "wallet",
+    "claim",
+    "service",
+    "billing",
+    "payment",
+    "click",
+    "pay",
+    "alert",
+    "recovery",
+    "recover",
+    "id",
+    "security"
+  ],
+  "stats": [
+    {
+      "keyword": "log-in",
+      "support": 17,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "keyword": "sign-in",
+      "support": 46,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "keyword": "confirmation",
+      "support": 84,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "keyword": "credential",
+      "support": 11,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "keyword": "validate",
+      "support": 53,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "keyword": "authenticate",
+      "support": 228,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "keyword": "suspended",
+      "support": 3,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "keyword": "login",
+      "support": 2771,
+      "phishing_rate": 0.9957,
+      "lift": 2.331
+    },
+    {
+      "keyword": "verify",
+      "support": 247,
+      "phishing_rate": 0.9919,
+      "lift": 2.323
+    },
+    {
+      "keyword": "confirm",
+      "support": 325,
+      "phishing_rate": 0.9908,
+      "lift": 2.32
+    },
+    {
+      "keyword": "signin",
+      "support": 720,
+      "phishing_rate": 0.9889,
+      "lift": 2.316
+    },
+    {
+      "keyword": "verification",
+      "support": 266,
+      "phishing_rate": 0.9887,
+      "lift": 2.315
+    },
+    {
+      "keyword": "account",
+      "support": 880,
+      "phishing_rate": 0.9784,
+      "lift": 2.291
+    },
+    {
+      "keyword": "update",
+      "support": 696,
+      "phishing_rate": 0.9741,
+      "lift": 2.281
+    },
+    {
+      "keyword": "secure",
+      "support": 484,
+      "phishing_rate": 0.9607,
+      "lift": 2.25
+    },
+    {
+      "keyword": "support",
+      "support": 816,
+      "phishing_rate": 0.9596,
+      "lift": 2.247
+    },
+    {
+      "keyword": "customer",
+      "support": 76,
+      "phishing_rate": 0.9474,
+      "lift": 2.218
+    },
+    {
+      "keyword": "suspend",
+      "support": 13,
+      "phishing_rate": 0.9231,
+      "lift": 2.161
+    },
+    {
+      "keyword": "banking",
+      "support": 138,
+      "phishing_rate": 0.9203,
+      "lift": 2.155
+    },
+    {
+      "keyword": "wallet",
+      "support": 273,
+      "phishing_rate": 0.9158,
+      "lift": 2.144
+    },
+    {
+      "keyword": "claim",
+      "support": 84,
+      "phishing_rate": 0.8929,
+      "lift": 2.091
+    },
+    {
+      "keyword": "service",
+      "support": 1156,
+      "phishing_rate": 0.8875,
+      "lift": 2.078
+    },
+    {
+      "keyword": "billing",
+      "support": 52,
+      "phishing_rate": 0.8846,
+      "lift": 2.071
+    },
+    {
+      "keyword": "unlock",
+      "support": 15,
+      "phishing_rate": 0.8667,
+      "lift": 2.029
+    },
+    {
+      "keyword": "bonus",
+      "support": 45,
+      "phishing_rate": 0.8667,
+      "lift": 2.029
+    },
+    {
+      "keyword": "invoice",
+      "support": 36,
+      "phishing_rate": 0.8611,
+      "lift": 2.016
+    },
+    {
+      "keyword": "urgent",
+      "support": 7,
+      "phishing_rate": 0.8571,
+      "lift": 2.007
+    },
+    {
+      "keyword": "payment",
+      "support": 89,
+      "phishing_rate": 0.8539,
+      "lift": 2.0
+    },
+    {
+      "keyword": "password",
+      "support": 40,
+      "phishing_rate": 0.85,
+      "lift": 1.99
+    },
+    {
+      "keyword": "refund",
+      "support": 13,
+      "phishing_rate": 0.8462,
+      "lift": 1.981
+    },
+    {
+      "keyword": "webscr",
+      "support": 6,
+      "phishing_rate": 0.8333,
+      "lift": 1.951
+    },
+    {
+      "keyword": "activate",
+      "support": 18,
+      "phishing_rate": 0.8333,
+      "lift": 1.951
+    },
+    {
+      "keyword": "click",
+      "support": 234,
+      "phishing_rate": 0.7906,
+      "lift": 1.851
+    },
+    {
+      "keyword": "pay",
+      "support": 579,
+      "phishing_rate": 0.7858,
+      "lift": 1.84
+    },
+    {
+      "keyword": "alert",
+      "support": 122,
+      "phishing_rate": 0.7787,
+      "lift": 1.823
+    },
+    {
+      "keyword": "recovery",
+      "support": 67,
+      "phishing_rate": 0.7612,
+      "lift": 1.782
+    },
+    {
+      "keyword": "recover",
+      "support": 83,
+      "phishing_rate": 0.747,
+      "lift": 1.749
+    },
+    {
+      "keyword": "reset",
+      "support": 31,
+      "phishing_rate": 0.7097,
+      "lift": 1.662
+    },
+    {
+      "keyword": "id",
+      "support": 9864,
+      "phishing_rate": 0.6773,
+      "lift": 1.586
+    },
+    {
+      "keyword": "security",
+      "support": 252,
+      "phishing_rate": 0.6587,
+      "lift": 1.542
+    },
+    {
+      "keyword": "winner",
+      "support": 10,
+      "phishing_rate": 0.6,
+      "lift": 1.405
+    },
+    {
+      "keyword": "limited",
+      "support": 40,
+      "phishing_rate": 0.475,
+      "lift": 1.112
+    },
+    {
+      "keyword": "gift",
+      "support": 131,
+      "phishing_rate": 0.3969,
+      "lift": 0.929
+    },
+    {
+      "keyword": "prize",
+      "support": 34,
+      "phishing_rate": 0.2647,
+      "lift": 0.62
+    }
+  ]
+}

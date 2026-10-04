@@ -1,0 +1,19 @@
+# Minimal runtime dependencies for the FastAPI prediction service (Phase 7)
+# and the Lambda container image (Phase 10, Dockerfile.lambda). Deliberately
+# narrower than requirements.txt (which is the full dev/notebook environment
+# - jupyter, shap, matplotlib, seaborn, etc. are not needed to serve
+# predictions) so both images stay small and build fast.
+fastapi==0.141.1
+uvicorn==0.52.1
+pydantic==2.13.4
+joblib==1.5.3
+pandas==3.0.5
+numpy==2.3.5
+scikit-learn==1.9.0
+xgboost==3.4.0
+# mangum: ASGI-to-Lambda adapter, used only by src/api/main.py's Lambda
+# `handler` (Phase 10). Zero heavy dependencies (just typing-extensions,
+# already required by fastapi/pydantic), so including it in the Phase 7
+# plain-Docker image too costs nothing and keeps one requirements file for
+# both images rather than forking a separate Lambda-only requirements file.
+mangum==0.21.0

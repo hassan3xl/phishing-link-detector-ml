@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.git/
+.pytest_cache/
+notebooks/
+data/
+reports/
+logs/
+models_saved/*.joblib
+!models_saved/final_model.joblib
+.ipynb_checkpoints/
+.DS_Store

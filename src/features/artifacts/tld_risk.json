@@ -1,0 +1,1027 @@
+{
+  "base_rate": 0.4271,
+  "min_support": 30,
+  "min_lift": 1.5,
+  "high_risk_tlds": [
+    "gp",
+    "gq",
+    "238",
+    "24",
+    "host",
+    "icu",
+    "cf",
+    "cfd",
+    "cyou",
+    "page",
+    "ml",
+    "top",
+    "site",
+    "ga",
+    "link",
+    "gd",
+    "fun",
+    "win",
+    "ly",
+    "dev",
+    "xyz",
+    "app",
+    "lc",
+    "tk",
+    "work",
+    "cloud",
+    "shop",
+    "pw",
+    "click",
+    "club",
+    "vip",
+    "online",
+    "gy",
+    "live",
+    "digital",
+    "ht",
+    "bio",
+    "website",
+    "co",
+    "ws",
+    "io",
+    "network",
+    "one",
+    "space",
+    "sh",
+    "me",
+    "cc",
+    "su",
+    "pro",
+    "to",
+    "life",
+    "re",
+    "store",
+    "bz",
+    "biz",
+    "la",
+    "ru",
+    "name",
+    "art",
+    "li",
+    "ir",
+    "tech",
+    "id",
+    "cn"
+  ],
+  "stats": [
+    {
+      "tld": "gp",
+      "support": 62,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "gq",
+      "support": 393,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "238",
+      "support": 31,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "24",
+      "support": 33,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "host",
+      "support": 35,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "icu",
+      "support": 116,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "cf",
+      "support": 948,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "cfd",
+      "support": 85,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "cyou",
+      "support": 51,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "page",
+      "support": 380,
+      "phishing_rate": 1.0,
+      "lift": 2.342
+    },
+    {
+      "tld": "ml",
+      "support": 809,
+      "phishing_rate": 0.9988,
+      "lift": 2.339
+    },
+    {
+      "tld": "top",
+      "support": 1826,
+      "phishing_rate": 0.9989,
+      "lift": 2.339
+    },
+    {
+      "tld": "site",
+      "support": 1172,
+      "phishing_rate": 0.9974,
+      "lift": 2.335
+    },
+    {
+      "tld": "ga",
+      "support": 876,
+      "phishing_rate": 0.9954,
+      "lift": 2.331
+    },
+    {
+      "tld": "link",
+      "support": 1152,
+      "phishing_rate": 0.9931,
+      "lift": 2.325
+    },
+    {
+      "tld": "gd",
+      "support": 266,
+      "phishing_rate": 0.9925,
+      "lift": 2.324
+    },
+    {
+      "tld": "fun",
+      "support": 300,
+      "phishing_rate": 0.9867,
+      "lift": 2.31
+    },
+    {
+      "tld": "win",
+      "support": 68,
+      "phishing_rate": 0.9853,
+      "lift": 2.307
+    },
+    {
+      "tld": "ly",
+      "support": 201,
+      "phishing_rate": 0.9851,
+      "lift": 2.307
+    },
+    {
+      "tld": "dev",
+      "support": 1831,
+      "phishing_rate": 0.9847,
+      "lift": 2.306
+    },
+    {
+      "tld": "xyz",
+      "support": 1191,
+      "phishing_rate": 0.984,
+      "lift": 2.304
+    },
+    {
+      "tld": "app",
+      "support": 5196,
+      "phishing_rate": 0.9786,
+      "lift": 2.291
+    },
+    {
+      "tld": "lc",
+      "support": 43,
+      "phishing_rate": 0.9767,
+      "lift": 2.287
+    },
+    {
+      "tld": "tk",
+      "support": 170,
+      "phishing_rate": 0.9765,
+      "lift": 2.286
+    },
+    {
+      "tld": "work",
+      "support": 201,
+      "phishing_rate": 0.9751,
+      "lift": 2.283
+    },
+    {
+      "tld": "cloud",
+      "support": 331,
+      "phishing_rate": 0.9728,
+      "lift": 2.278
+    },
+    {
+      "tld": "shop",
+      "support": 321,
+      "phishing_rate": 0.9626,
+      "lift": 2.254
+    },
+    {
+      "tld": "pw",
+      "support": 78,
+      "phishing_rate": 0.9615,
+      "lift": 2.251
+    },
+    {
+      "tld": "click",
+      "support": 52,
+      "phishing_rate": 0.9615,
+      "lift": 2.251
+    },
+    {
+      "tld": "club",
+      "support": 418,
+      "phishing_rate": 0.9545,
+      "lift": 2.235
+    },
+    {
+      "tld": "vip",
+      "support": 64,
+      "phishing_rate": 0.9531,
+      "lift": 2.232
+    },
+    {
+      "tld": "online",
+      "support": 249,
+      "phishing_rate": 0.9398,
+      "lift": 2.201
+    },
+    {
+      "tld": "gy",
+      "support": 64,
+      "phishing_rate": 0.9375,
+      "lift": 2.195
+    },
+    {
+      "tld": "live",
+      "support": 247,
+      "phishing_rate": 0.9312,
+      "lift": 2.18
+    },
+    {
+      "tld": "digital",
+      "support": 42,
+      "phishing_rate": 0.9286,
+      "lift": 2.174
+    },
+    {
+      "tld": "ht",
+      "support": 76,
+      "phishing_rate": 0.9211,
+      "lift": 2.157
+    },
+    {
+      "tld": "bio",
+      "support": 47,
+      "phishing_rate": 0.9149,
+      "lift": 2.142
+    },
+    {
+      "tld": "website",
+      "support": 47,
+      "phishing_rate": 0.9149,
+      "lift": 2.142
+    },
+    {
+      "tld": "co",
+      "support": 4295,
+      "phishing_rate": 0.9139,
+      "lift": 2.14
+    },
+    {
+      "tld": "ws",
+      "support": 276,
+      "phishing_rate": 0.9058,
+      "lift": 2.121
+    },
+    {
+      "tld": "io",
+      "support": 3330,
+      "phishing_rate": 0.897,
+      "lift": 2.1
+    },
+    {
+      "tld": "network",
+      "support": 98,
+      "phishing_rate": 0.8878,
+      "lift": 2.079
+    },
+    {
+      "tld": "one",
+      "support": 78,
+      "phishing_rate": 0.8718,
+      "lift": 2.041
+    },
+    {
+      "tld": "space",
+      "support": 58,
+      "phishing_rate": 0.8621,
+      "lift": 2.019
+    },
+    {
+      "tld": "sh",
+      "support": 83,
+      "phishing_rate": 0.8554,
+      "lift": 2.003
+    },
+    {
+      "tld": "me",
+      "support": 790,
+      "phishing_rate": 0.8506,
+      "lift": 1.992
+    },
+    {
+      "tld": "cc",
+      "support": 305,
+      "phishing_rate": 0.8459,
+      "lift": 1.981
+    },
+    {
+      "tld": "su",
+      "support": 57,
+      "phishing_rate": 0.8421,
+      "lift": 1.972
+    },
+    {
+      "tld": "pro",
+      "support": 91,
+      "phishing_rate": 0.8242,
+      "lift": 1.93
+    },
+    {
+      "tld": "to",
+      "support": 79,
+      "phishing_rate": 0.8101,
+      "lift": 1.897
+    },
+    {
+      "tld": "life",
+      "support": 62,
+      "phishing_rate": 0.8065,
+      "lift": 1.888
+    },
+    {
+      "tld": "re",
+      "support": 30,
+      "phishing_rate": 0.8,
+      "lift": 1.873
+    },
+    {
+      "tld": "store",
+      "support": 60,
+      "phishing_rate": 0.8,
+      "lift": 1.873
+    },
+    {
+      "tld": "bz",
+      "support": 34,
+      "phishing_rate": 0.7941,
+      "lift": 1.859
+    },
+    {
+      "tld": "biz",
+      "support": 334,
+      "phishing_rate": 0.7725,
+      "lift": 1.809
+    },
+    {
+      "tld": "la",
+      "support": 39,
+      "phishing_rate": 0.7692,
+      "lift": 1.801
+    },
+    {
+      "tld": "ru",
+      "support": 3078,
+      "phishing_rate": 0.768,
+      "lift": 1.798
+    },
+    {
+      "tld": "name",
+      "support": 34,
+      "phishing_rate": 0.7647,
+      "lift": 1.791
+    },
+    {
+      "tld": "art",
+      "support": 42,
+      "phishing_rate": 0.7381,
+      "lift": 1.728
+    },
+    {
+      "tld": "li",
+      "support": 44,
+      "phishing_rate": 0.7273,
+      "lift": 1.703
+    },
+    {
+      "tld": "ir",
+      "support": 190,
+      "phishing_rate": 0.7211,
+      "lift": 1.688
+    },
+    {
+      "tld": "tech",
+      "support": 77,
+      "phishing_rate": 0.7143,
+      "lift": 1.673
+    },
+    {
+      "tld": "id",
+      "support": 643,
+      "phishing_rate": 0.7061,
+      "lift": 1.653
+    },
+    {
+      "tld": "cn",
+      "support": 797,
+      "phishing_rate": 0.6863,
+      "lift": 1.607
+    },
+    {
+      "tld": "pl",
+      "support": 1053,
+      "phishing_rate": 0.6078,
+      "lift": 1.423
+    },
+    {
+      "tld": "pe",
+      "support": 91,
+      "phishing_rate": 0.6044,
+      "lift": 1.415
+    },
+    {
+      "tld": "do",
+      "support": 33,
+      "phishing_rate": 0.5758,
+      "lift": 1.348
+    },
+    {
+      "tld": "ua",
+      "support": 272,
+      "phishing_rate": 0.5699,
+      "lift": 1.334
+    },
+    {
+      "tld": "info",
+      "support": 1253,
+      "phishing_rate": 0.569,
+      "lift": 1.332
+    },
+    {
+      "tld": "kz",
+      "support": 62,
+      "phishing_rate": 0.5645,
+      "lift": 1.322
+    },
+    {
+      "tld": "gg",
+      "support": 34,
+      "phishing_rate": 0.5588,
+      "lift": 1.308
+    },
+    {
+      "tld": "vn",
+      "support": 210,
+      "phishing_rate": 0.5571,
+      "lift": 1.304
+    },
+    {
+      "tld": "mt",
+      "support": 35,
+      "phishing_rate": 0.5429,
+      "lift": 1.271
+    },
+    {
+      "tld": "nu",
+      "support": 61,
+      "phishing_rate": 0.5246,
+      "lift": 1.228
+    },
+    {
+      "tld": "asia",
+      "support": 51,
+      "phishing_rate": 0.5098,
+      "lift": 1.194
+    },
+    {
+      "tld": "cl",
+      "support": 252,
+      "phishing_rate": 0.5079,
+      "lift": 1.189
+    },
+    {
+      "tld": "ng",
+      "support": 125,
+      "phishing_rate": 0.488,
+      "lift": 1.143
+    },
+    {
+      "tld": "zw",
+      "support": 33,
+      "phishing_rate": 0.4848,
+      "lift": 1.135
+    },
+    {
+      "tld": "mx",
+      "support": 382,
+      "phishing_rate": 0.4424,
+      "lift": 1.036
+    },
+    {
+      "tld": "pk",
+      "support": 149,
+      "phishing_rate": 0.4362,
+      "lift": 1.021
+    },
+    {
+      "tld": "net",
+      "support": 5727,
+      "phishing_rate": 0.433,
+      "lift": 1.014
+    },
+    {
+      "tld": "com",
+      "support": 89841,
+      "phishing_rate": 0.3888,
+      "lift": 0.91
+    },
+    {
+      "tld": "us",
+      "support": 863,
+      "phishing_rate": 0.3859,
+      "lift": 0.904
+    },
+    {
+      "tld": "in",
+      "support": 1086,
+      "phishing_rate": 0.3858,
+      "lift": 0.903
+    },
+    {
+      "tld": "ug",
+      "support": 52,
+      "phishing_rate": 0.3846,
+      "lift": 0.901
+    },
+    {
+      "tld": "al",
+      "support": 34,
+      "phishing_rate": 0.3824,
+      "lift": 0.895
+    },
+    {
+      "tld": "by",
+      "support": 53,
+      "phishing_rate": 0.3774,
+      "lift": 0.884
+    },
+    {
+      "tld": "ke",
+      "support": 64,
+      "phishing_rate": 0.3594,
+      "lift": 0.842
+    },
+    {
+      "tld": "ma",
+      "support": 42,
+      "phishing_rate": 0.3571,
+      "lift": 0.836
+    },
+    {
+      "tld": "br",
+      "support": 1472,
+      "phishing_rate": 0.356,
+      "lift": 0.834
+    },
+    {
+      "tld": "ae",
+      "support": 116,
+      "phishing_rate": 0.3362,
+      "lift": 0.787
+    },
+    {
+      "tld": "ar",
+      "support": 281,
+      "phishing_rate": 0.3274,
+      "lift": 0.767
+    },
+    {
+      "tld": "np",
+      "support": 52,
+      "phishing_rate": 0.3269,
+      "lift": 0.765
+    },
+    {
+      "tld": "mobi",
+      "support": 46,
+      "phishing_rate": 0.3261,
+      "lift": 0.764
+    },
+    {
+      "tld": "kr",
+      "support": 246,
+      "phishing_rate": 0.3089,
+      "lift": 0.723
+    },
+    {
+      "tld": "ro",
+      "support": 439,
+      "phishing_rate": 0.2984,
+      "lift": 0.699
+    },
+    {
+      "tld": "bd",
+      "support": 47,
+      "phishing_rate": 0.2979,
+      "lift": 0.698
+    },
+    {
+      "tld": "th",
+      "support": 90,
+      "phishing_rate": 0.2889,
+      "lift": 0.676
+    },
+    {
+      "tld": "eu",
+      "support": 802,
+      "phishing_rate": 0.2868,
+      "lift": 0.672
+    },
+    {
+      "tld": "tz",
+      "support": 40,
+      "phishing_rate": 0.275,
+      "lift": 0.644
+    },
+    {
+      "tld": "ba",
+      "support": 37,
+      "phishing_rate": 0.2703,
+      "lift": 0.633
+    },
+    {
+      "tld": "am",
+      "support": 78,
+      "phishing_rate": 0.2692,
+      "lift": 0.63
+    },
+    {
+      "tld": "tr",
+      "support": 290,
+      "phishing_rate": 0.2655,
+      "lift": 0.622
+    },
+    {
+      "tld": "fr",
+      "support": 1448,
+      "phishing_rate": 0.2583,
+      "lift": 0.605
+    },
+    {
+      "tld": "za",
+      "support": 397,
+      "phishing_rate": 0.2569,
+      "lift": 0.602
+    },
+    {
+      "tld": "lv",
+      "support": 63,
+      "phishing_rate": 0.254,
+      "lift": 0.595
+    },
+    {
+      "tld": "ge",
+      "support": 40,
+      "phishing_rate": 0.25,
+      "lift": 0.585
+    },
+    {
+      "tld": "news",
+      "support": 33,
+      "phishing_rate": 0.2424,
+      "lift": 0.568
+    },
+    {
+      "tld": "az",
+      "support": 50,
+      "phishing_rate": 0.24,
+      "lift": 0.562
+    },
+    {
+      "tld": "my",
+      "support": 171,
+      "phishing_rate": 0.2339,
+      "lift": 0.548
+    },
+    {
+      "tld": "pt",
+      "support": 217,
+      "phishing_rate": 0.2304,
+      "lift": 0.539
+    },
+    {
+      "tld": "uy",
+      "support": 44,
+      "phishing_rate": 0.2273,
+      "lift": 0.532
+    },
+    {
+      "tld": "hu",
+      "support": 226,
+      "phishing_rate": 0.208,
+      "lift": 0.487
+    },
+    {
+      "tld": "tw",
+      "support": 179,
+      "phishing_rate": 0.2067,
+      "lift": 0.484
+    },
+    {
+      "tld": "sa",
+      "support": 34,
+      "phishing_rate": 0.2059,
+      "lift": 0.482
+    },
+    {
+      "tld": "at",
+      "support": 415,
+      "phishing_rate": 0.2024,
+      "lift": 0.474
+    },
+    {
+      "tld": "ec",
+      "support": 35,
+      "phishing_rate": 0.2,
+      "lift": 0.468
+    },
+    {
+      "tld": "lu",
+      "support": 61,
+      "phishing_rate": 0.1967,
+      "lift": 0.461
+    },
+    {
+      "tld": "es",
+      "support": 582,
+      "phishing_rate": 0.1838,
+      "lift": 0.43
+    },
+    {
+      "tld": "de",
+      "support": 3209,
+      "phishing_rate": 0.1761,
+      "lift": 0.412
+    },
+    {
+      "tld": "hk",
+      "support": 117,
+      "phishing_rate": 0.1709,
+      "lift": 0.4
+    },
+    {
+      "tld": "se",
+      "support": 575,
+      "phishing_rate": 0.167,
+      "lift": 0.391
+    },
+    {
+      "tld": "lt",
+      "support": 139,
+      "phishing_rate": 0.1655,
+      "lift": 0.388
+    },
+    {
+      "tld": "tv",
+      "support": 224,
+      "phishing_rate": 0.1652,
+      "lift": 0.387
+    },
+    {
+      "tld": "sg",
+      "support": 221,
+      "phishing_rate": 0.1584,
+      "lift": 0.371
+    },
+    {
+      "tld": "ph",
+      "support": 125,
+      "phishing_rate": 0.144,
+      "lift": 0.337
+    },
+    {
+      "tld": "gr",
+      "support": 399,
+      "phishing_rate": 0.1328,
+      "lift": 0.311
+    },
+    {
+      "tld": "ai",
+      "support": 53,
+      "phishing_rate": 0.1321,
+      "lift": 0.309
+    },
+    {
+      "tld": "rs",
+      "support": 124,
+      "phishing_rate": 0.129,
+      "lift": 0.302
+    },
+    {
+      "tld": "au",
+      "support": 2417,
+      "phishing_rate": 0.1221,
+      "lift": 0.286
+    },
+    {
+      "tld": "org",
+      "support": 15059,
+      "phishing_rate": 0.121,
+      "lift": 0.283
+    },
+    {
+      "tld": "it",
+      "support": 1544,
+      "phishing_rate": 0.1172,
+      "lift": 0.274
+    },
+    {
+      "tld": "lk",
+      "support": 60,
+      "phishing_rate": 0.1167,
+      "lift": 0.273
+    },
+    {
+      "tld": "be",
+      "support": 559,
+      "phishing_rate": 0.1163,
+      "lift": 0.272
+    },
+    {
+      "tld": "nl",
+      "support": 1404,
+      "phishing_rate": 0.114,
+      "lift": 0.267
+    },
+    {
+      "tld": "ee",
+      "support": 94,
+      "phishing_rate": 0.1064,
+      "lift": 0.249
+    },
+    {
+      "tld": "ch",
+      "support": 451,
+      "phishing_rate": 0.1064,
+      "lift": 0.249
+    },
+    {
+      "tld": "sk",
+      "support": 161,
+      "phishing_rate": 0.1056,
+      "lift": 0.247
+    },
+    {
+      "tld": "nz",
+      "support": 511,
+      "phishing_rate": 0.0998,
+      "lift": 0.234
+    },
+    {
+      "tld": "cz",
+      "support": 481,
+      "phishing_rate": 0.0977,
+      "lift": 0.229
+    },
+    {
+      "tld": "dk",
+      "support": 258,
+      "phishing_rate": 0.0969,
+      "lift": 0.227
+    },
+    {
+      "tld": "fm",
+      "support": 65,
+      "phishing_rate": 0.0923,
+      "lift": 0.216
+    },
+    {
+      "tld": "si",
+      "support": 135,
+      "phishing_rate": 0.0889,
+      "lift": 0.208
+    },
+    {
+      "tld": "il",
+      "support": 219,
+      "phishing_rate": 0.0868,
+      "lift": 0.203
+    },
+    {
+      "tld": "is",
+      "support": 89,
+      "phishing_rate": 0.0787,
+      "lift": 0.184
+    },
+    {
+      "tld": "ca",
+      "support": 1319,
+      "phishing_rate": 0.0766,
+      "lift": 0.179
+    },
+    {
+      "tld": "cat",
+      "support": 82,
+      "phishing_rate": 0.0732,
+      "lift": 0.171
+    },
+    {
+      "tld": "jp",
+      "support": 1777,
+      "phishing_rate": 0.0647,
+      "lift": 0.151
+    },
+    {
+      "tld": "fi",
+      "support": 252,
+      "phishing_rate": 0.0595,
+      "lift": 0.139
+    },
+    {
+      "tld": "travel",
+      "support": 39,
+      "phishing_rate": 0.0513,
+      "lift": 0.12
+    },
+    {
+      "tld": "uk",
+      "support": 5128,
+      "phishing_rate": 0.0476,
+      "lift": 0.111
+    },
+    {
+      "tld": "hr",
+      "support": 134,
+      "phishing_rate": 0.0373,
+      "lift": 0.087
+    },
+    {
+      "tld": "coop",
+      "support": 30,
+      "phishing_rate": 0.0333,
+      "lift": 0.078
+    },
+    {
+      "tld": "no",
+      "support": 328,
+      "phishing_rate": 0.0335,
+      "lift": 0.078
+    },
+    {
+      "tld": "bg",
+      "support": 104,
+      "phishing_rate": 0.0288,
+      "lift": 0.067
+    },
+    {
+      "tld": "ie",
+      "support": 375,
+      "phishing_rate": 0.0187,
+      "lift": 0.044
+    },
+    {
+      "tld": "edu",
+      "support": 1481,
+      "phishing_rate": 0.0027,
+      "lift": 0.006
+    },
+    {
+      "tld": "mil",
+      "support": 233,
+      "phishing_rate": 0.0,
+      "lift": 0.0
+    },
+    {
+      "tld": "gov",
+      "support": 1006,
+      "phishing_rate": 0.0,
+      "lift": 0.0
+    }
+  ]
+}

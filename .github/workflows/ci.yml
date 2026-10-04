@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      # Slim runtime deps + test tools only - fast, and sufficient for
+      # everything tests/ imports (src.api, src.features, src.models are not
+      # imported directly by the model-loading test, only joblib is).
+      - name: Install dependencies
+        run: |
+          uv pip install --system -r requirements-api.txt pytest httpx
+
+      - name: Run tests
+        run: pytest tests/ -v
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t phishing-detection-ml:ci .
+
+      - name: Smoke test the container
+        run: |
+          docker run -d --name phishing-api-ci -p 8000:8000 phishing-detection-ml:ci
+          for i in $(seq 1 15); do
+            if curl -sf http://localhost:8000/health > /dev/null; then break; fi
+            sleep 1
+          done
+          curl -sf http://localhost:8000/health | tee /dev/stderr | grep -q '"model_loaded":true'
+          curl -sf -X POST http://localhost:8000/predict -H "Content-Type: application/json" \
+            -d '{"url":"http://paypal-secure-login.xyz/confirm?id=12345"}' | tee /dev/stderr | grep -q '"prediction":"phishing"'
+          docker logs phishing-api-ci
+          docker rm -f phishing-api-ci

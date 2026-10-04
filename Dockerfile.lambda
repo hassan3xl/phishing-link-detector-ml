@@ -1,0 +1,46 @@
+# Phase 10: AWS Lambda container image variant of the Phase 7 Dockerfile.
+#
+# Differs from the plain Dockerfile in three ways Lambda's container-image
+# contract requires:
+#   1. Base image is AWS's own Lambda Python image (includes the Lambda
+#      Runtime Interface Client, which polls the Lambda invoke API - a
+#      plain python:3.13-slim image has no way to receive invocations).
+#   2. Dependencies + code are installed into $LAMBDA_TASK_ROOT (/var/task),
+#      not a normal site-packages location - this is the documented AWS
+#      pattern for Lambda container images.
+#   3. CMD names a HANDLER FUNCTION ("src.api.main.handler"), not a
+#      long-running server command - Lambda invokes that callable once per
+#      request via the Runtime Interface Client, it does not run `uvicorn`
+#      bound to a port. `handler` is the Mangum-wrapped ASGI adapter defined
+#      at the bottom of src/api/main.py.
+FROM public.ecr.aws/lambda/python:3.13
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+
+# Same slim runtime dependency set as Phase 7's Docker image (now also
+# includes mangum - see requirements-api.txt).
+COPY requirements-api.txt ${LAMBDA_TASK_ROOT}/requirements-api.txt
+RUN uv pip install --system --target "${LAMBDA_TASK_ROOT}" --no-cache -r ${LAMBDA_TASK_ROOT}/requirements-api.txt \
+    && rm -f ${LAMBDA_TASK_ROOT}/requirements-api.txt \
+    # Same unused-GPU-dependency strip as the Phase 7 Dockerfile (see its
+    # comment) - `pip uninstall` doesn't operate cleanly on a --target
+    # install, so this removes the directory directly.
+    && rm -rf ${LAMBDA_TASK_ROOT}/nvidia_nccl_cu13* ${LAMBDA_TASK_ROOT}/nvidia*
+
+COPY src/ ${LAMBDA_TASK_ROOT}/src/
+COPY models_saved/final_model.joblib models_saved/final_model_metadata.json \
+     ${LAMBDA_TASK_ROOT}/models_saved/
+
+# MODEL_ARTIFACT_PATH: matches what src/api/main.py reads (falls back to a
+# relative path meant for Phase 7's plain-Docker image otherwise). Lambda
+# extracts/mounts the image contents at /var/task, so this must be absolute.
+# PREDICTION_LOG_PATH: /tmp is the only writable path in a Lambda execution
+# environment (see src/api/prediction_log.py) - and is ephemeral, wiped
+# whenever the execution environment is recycled, which is why this alone
+# is NOT a durable substitute for the Phase 7 Docker deployment's
+# logs/predictions.jsonl for real drift-monitoring; see the README's Phase
+# 10 section for how that gap is handled.
+ENV MODEL_ARTIFACT_PATH=/var/task/models_saved/final_model.joblib
+ENV PREDICTION_LOG_PATH=/tmp/predictions.jsonl
+
+CMD ["src.api.main.handler"]
