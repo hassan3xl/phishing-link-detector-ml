@@ -8,10 +8,40 @@ This project exists to demonstrate traditional/classical ML engineering skill (f
 
 **Scope (v1):** binary classification (phishing vs. legitimate) from the URL string alone. Explicitly out of scope for v1: email body/header/attachment analysis, deep learning/transformer/embedding-based text models, browser-extension or real-time threat-feed integration, and multi-class classification. These are noted as future work later in this README.
 
-Status: ✅ complete (Phases 0-9). See [Future Work](#future-work) for the deliberately-out-of-scope stretch items.
+## ⚡ Quick Start: How to Run the App
+
+Run the application in seconds using either Docker or Python:
+
+### 🐳 Option 1: Using Docker (Zero Setup, 1 Command)
+```bash
+docker compose up
+```
+*(Or with rebuild: `docker compose up --build`)*  
+👉 Open **`http://localhost:8000/`** in your browser!  
+*(Note: If the model binary is missing, Docker automatically trains it during build).*
+
+---
+
+### 🐍 Option 2: Using Python (`manage.py`)
+```bash
+python manage.py runserver
+```
+*(Or with uv: `uv run python manage.py runserver`)*  
+👉 Open **`http://localhost:8000/`** in your browser!  
+*(Note: If the model binary is missing, `manage.py` automatically trains it on first launch).*
+
+#### 🛠️ Handy `manage.py` Shortcuts:
+* `python manage.py runserver [port]` — Starts local server & UI (default port: 8000, or e.g. `8080`)
+* `python manage.py scan <url>` — Scans any link instantly in the terminal without opening a browser
+* `python manage.py docker` — Builds and starts the app with Docker Compose
+* `python manage.py test` — Runs the 34 automated unit and integration tests
+* `python manage.py train` — Retrains the production Random Forest model
+
+---
 
 ## Table of Contents
 
+- [⚡ Quick Start: How to Run the App](#-quick-start-how-to-run-the-app)
 - [Beginner's Guide: How This App & Machine Learning Work](#-beginners-guide-how-this-app--machine-learning-work)
   - [1. What This App Does (In Plain English)](#1-what-this-app-does-in-plain-english)
   - [2. How Machine Learning Works Here (No Prior ML Knowledge Needed)](#2-how-machine-learning-works-here-no-prior-ml-knowledge-needed)
@@ -568,27 +598,24 @@ Other, secondary limitations (see also the individual caveats already noted inli
 - **Zero Train/Serve Skew**: Reuses `extract_features` from `src.features.extract` unchanged.
 - **Detailed Empirical Study**: See [`docs/RANDOM_FOREST_STUDY.md`](docs/RANDOM_FOREST_STUDY.md) for the in-depth Random Forest empirical evaluation, confusion matrix, feature importance analysis, and literature comparison.
 
-> [!NOTE]
-> **Trained Model Artifact:** Heavy model binaries (`.joblib`, 164MB) are kept out of GitHub to prevent repository bloat and comply with GitHub file size restrictions. Because the training datasets are included in the repository, anyone can train the exact production model locally in ~1 minute:
-> ```bash
-> python -m src.models.train_augmented
-> ```
-> This generates `models_saved/final_model.joblib` and prepares the server and test suite for execution.
-
-**Run with Docker** (recommended — this is what's tested end-to-end):
+### 🐳 Running with Docker (Recommended)
 
 ```bash
-python -m src.models.train_augmented   # Ensure model artifact is generated first
-docker build -t phishing-detection-ml .
-docker run -d --name phishing-api -p 8000:8000 phishing-detection-ml
+docker compose up
 ```
+*(Or in background: `docker compose up -d`)*  
+The container automatically checks for the model (training it if needed), starts the server, and serves the dashboard at **`http://localhost:8000/`**.  
+To stop: `docker compose down`.
 
-**Or run directly** (with virtual environment active):
+### 🐍 Running with Python & `manage.py`
 
 ```bash
-uv pip install -r requirements-api.txt   # slim runtime deps; or uv sync
-uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+python manage.py runserver
+# or with uv:
+uv run python manage.py runserver
 ```
+*(If `models_saved/final_model.joblib` is missing, `manage.py` automatically trains it before starting the server).*  
+To specify a custom port: `python manage.py runserver 8080`.
 
 Open **`http://localhost:8000/`** in your browser to use the graphical web scanner, or visit **`http://localhost:8000/docs`** for interactive Swagger documentation.
 

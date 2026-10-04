@@ -21,7 +21,17 @@ RUN uv pip install --system --no-cache -r requirements-api.txt \
 # see .gitignore), NOT the raw/full data, notebooks, or the other 3
 # candidate model artifacts from Phase 4, which are unused here.
 COPY src/ ./src/
-COPY models_saved/final_model.joblib models_saved/final_model_metadata.json ./models_saved/
+COPY models_saved/ ./models_saved/
+COPY data/train_augmented_features.csv data/test_features.csv ./data/
+
+# Auto-train the model if final_model.joblib is not present in the build context
+RUN if [ ! -f models_saved/final_model.joblib ]; then \
+        echo "Building production model inside container..." && \
+        python -m src.models.train_augmented && \
+        rm -rf data/; \
+    else \
+        rm -rf data/; \
+    fi
 
 EXPOSE 8000
 
