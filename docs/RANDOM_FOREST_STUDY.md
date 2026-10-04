@@ -112,8 +112,8 @@ flowchart TD
     D --> E["Random Forest Ensemble\n(300 De-correlated Decision Trees)"]
     E --> F["Ensemble Voting & Aggregation\nP(phishing) = 1/B ∑ I(tree_b = phish)"]
     F --> G{"Threshold Check\nP(phishing) ≥ θ"}
-    G -->|Yes| H["🚨 Phishing Alert\n(Risk Score + Red Flags)"]
-    G -->|No| I["🛡️ Legitimate Verified\n(Safe Rating + Structural Breakdown)"]
+    G -->|Yes| H["Phishing Alert\n(Risk Score + Red Flags)"]
+    G -->|No| I["Legitimate Verified\n(Safe Rating + Structural Breakdown)"]
 ```
 
 ### 3.2 Hyperparameter Configuration & Optimisation
@@ -250,9 +250,9 @@ The web application is embedded directly within FastAPI:
 2. Open **`http://localhost:8000/`** in any web browser.
 3. Enter any URL or select a pre-configured sample button:
    - Input: `http://paypal-secure-login.xyz/confirm?id=12345`  
-     Result: **🚨 PHISHING DETECTED** (Risk: 100.0%, Flagged for risky TLD, non-HTTPS, keywords)
+     Result: **PHISHING DETECTED** (Risk: 100.0%, Flagged for risky TLD, non-HTTPS, keywords)
    - Input: `https://www.google.com`  
-     Result: **🛡️ LEGITIMATE URL** (Risk: 0.0%, Clean structure, HTTPS, low entropy)
+     Result: **LEGITIMATE URL** (Risk: 0.0%, Clean structure, HTTPS, low entropy)
 
 ### 7.2 Programmatic REST API
 ```bash
@@ -327,13 +327,13 @@ To eliminate the PhiUSIIL zero-path representation bias and provide genuine real
 
 | Target Test URL | Baseline Random Forest (PhiUSIIL Only) | **Augmented Random Forest v2 (No Whitelist)** | Generalization Outcome |
 | :--- | :---: | :---: | :---: |
-| `https://chatgpt.com/c/6abfdef0-2040-83ea-af6b-39608909ab10` | 🚨 100.0% Phishing | **🛡️ 0.18% Phishing (Legitimate)** | ✅ **Resolved** |
-| `https://en.wikipedia.org/wiki/Phishing` | 🚨 100.0% Phishing | **🛡️ 5.84% Phishing (Legitimate)** | ✅ **Resolved** |
-| `https://github.com/torvalds/linux` | 🚨 100.0% Phishing | **🛡️ 8.69% Phishing (Legitimate)** | ✅ **Resolved** |
-| `https://www.google.com/search?q=cybersecurity` | 🚨 100.0% Phishing | **🛡️ 16.68% Phishing (Legitimate)** | ✅ **Resolved** |
-| `http://paypal-secure-login.xyz/confirm?id=12345` | 🚨 100.0% Phishing | **🚨 96.67% Phishing** | ✅ **Detected** |
-| `http://192.168.1.1/login.php?user=admin` | 🚨 100.0% Phishing | **🚨 99.00% Phishing** | ✅ **Detected** |
-| `http://account-verification.top/auth` | 🚨 100.0% Phishing | **🚨 99.33% Phishing** | ✅ **Detected** |
+| `https://chatgpt.com/c/6abfdef0-2040-83ea-af6b-39608909ab10` | 100.0% Phishing | **0.18% Phishing (Legitimate)** | **Resolved** |
+| `https://en.wikipedia.org/wiki/Phishing` | 100.0% Phishing | **5.84% Phishing (Legitimate)** | **Resolved** |
+| `https://github.com/torvalds/linux` | 100.0% Phishing | **8.69% Phishing (Legitimate)** | **Resolved** |
+| `https://www.google.com/search?q=cybersecurity` | 100.0% Phishing | **16.68% Phishing (Legitimate)** | **Resolved** |
+| `http://paypal-secure-login.xyz/confirm?id=12345` | 100.0% Phishing | **96.67% Phishing** | **Detected** |
+| `http://192.168.1.1/login.php?user=admin` | 100.0% Phishing | **99.00% Phishing** | **Detected** |
+| `http://account-verification.top/auth` | 100.0% Phishing | **99.33% Phishing** | **Detected** |
 
 ### 8.4 Conclusion
 By augmenting the legitimate class with diverse paths and UUID tokens, the model was successfully de-biased:

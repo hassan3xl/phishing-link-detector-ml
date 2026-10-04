@@ -48,11 +48,11 @@ def cmd_runserver(args):
             port = int(arg)
 
     print("\n" + "=" * 65)
-    print("🚀  PHISHING DETECTION ML SYSTEM")
+    print("PHISHING DETECTION ML SYSTEM")
     print("=" * 65)
-    print(f"👉  Interactive Web Dashboard: http://{host}:{port}/")
-    print(f"👉  Interactive API Swagger:   http://{host}:{port}/docs")
-    print("👉  Health Check:              http://{host}:{port}/health")
+    print(f"Interactive Web Dashboard: http://{host}:{port}/")
+    print(f"Interactive API Swagger:   http://{host}:{port}/docs")
+    print(f"Health Check:              http://{host}:{port}/health")
     print("=" * 65)
     print("Press CTRL+C to stop the server.\n")
 
@@ -63,7 +63,7 @@ def cmd_runserver(args):
 def cmd_docker(args):
     """Builds and runs the application using Docker."""
     ensure_model_exists()
-    print("\n🐳 Starting with Docker Compose...")
+    print("\nStarting with Docker Compose...")
     cmd = ["docker", "compose", "up", "--build"] + args
     try:
         sys.exit(subprocess.call(cmd))
@@ -76,14 +76,14 @@ def cmd_docker(args):
 def cmd_test(args):
     """Runs the test suite."""
     ensure_model_exists()
-    print("\n🧪 Running pytest test suite...")
+    print("\nRunning pytest test suite...")
     cmd = [sys.executable, "-m", "pytest", "tests/", "-v"] + args
     sys.exit(subprocess.call(cmd))
 
 
 def cmd_train(args):
     """Retrains the production Random Forest model."""
-    print("\n🧠 Training production model...")
+    print("\nTraining production model...")
     cmd = [sys.executable, "-m", "src.models.train_augmented"] + args
     sys.exit(subprocess.call(cmd))
 

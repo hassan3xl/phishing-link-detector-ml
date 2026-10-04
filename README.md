@@ -8,29 +8,29 @@ This project exists to demonstrate traditional/classical ML engineering skill (f
 
 **Scope (v1):** binary classification (phishing vs. legitimate) from the URL string alone. Explicitly out of scope for v1: email body/header/attachment analysis, deep learning/transformer/embedding-based text models, browser-extension or real-time threat-feed integration, and multi-class classification. These are noted as future work later in this README.
 
-## ⚡ Quick Start: How to Run the App
+## Quick Start: How to Run the App
 
 Run the application in seconds using either Docker or Python:
 
-### 🐳 Option 1: Using Docker (Zero Setup, 1 Command)
+### Option 1: Using Docker (Zero Setup, 1 Command)
 ```bash
 docker compose up
 ```
 *(Or with rebuild: `docker compose up --build`)*  
-👉 Open **`http://localhost:8000/`** in your browser!  
+Open **`http://localhost:8000/`** in your browser!  
 *(Note: If the model binary is missing, Docker automatically trains it during build).*
 
 ---
 
-### 🐍 Option 2: Using Python (`manage.py`)
+### Option 2: Using Python (`manage.py`)
 ```bash
 python manage.py runserver
 ```
 *(Or with uv: `uv run python manage.py runserver`)*  
-👉 Open **`http://localhost:8000/`** in your browser!  
+Open **`http://localhost:8000/`** in your browser!  
 *(Note: If the model binary is missing, `manage.py` automatically trains it on first launch).*
 
-#### 🛠️ Handy `manage.py` Shortcuts:
+#### Handy `manage.py` Shortcuts:
 * `python manage.py runserver [port]` — Starts local server & UI (default port: 8000, or e.g. `8080`)
 * `python manage.py scan <url>` — Scans any link instantly in the terminal without opening a browser
 * `python manage.py docker` — Builds and starts the app with Docker Compose
@@ -41,8 +41,8 @@ python manage.py runserver
 
 ## Table of Contents
 
-- [⚡ Quick Start: How to Run the App](#-quick-start-how-to-run-the-app)
-- [Beginner's Guide: How This App & Machine Learning Work](#-beginners-guide-how-this-app--machine-learning-work)
+- [Quick Start: How to Run the App](#quick-start-how-to-run-the-app)
+- [Beginner's Guide: How This App & Machine Learning Work](#beginners-guide-how-this-app--machine-learning-work)
   - [1. What This App Does (In Plain English)](#1-what-this-app-does-in-plain-english)
   - [2. How Machine Learning Works Here (No Prior ML Knowledge Needed)](#2-how-machine-learning-works-here-no-prior-ml-knowledge-needed)
   - [3. How the Web App Works (Even If You've Never Used Flask or FastAPI)](#3-how-the-web-app-works-even-if-youve-never-used-flask-or-fastapi)
@@ -66,7 +66,7 @@ python manage.py runserver
 
 ---
 
-## 🚀 Beginner's Guide: How This App & Machine Learning Work
+## Beginner's Guide: How This App & Machine Learning Work
 
 If you are new to Machine Learning (ML) or Python web frameworks like Flask and FastAPI, this section explains everything in plain English with everyday analogies.
 
@@ -225,13 +225,13 @@ Here is the exact journey of a single URL from the moment you click "Scan" to th
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as 👤 User (Browser)
-    participant UI as 🖥️ Web Page (index.html)
-    participant Server as ⚙️ FastAPI Server (main.py)
-    participant Validator as 🛡️ Validator (schemas.py)
-    participant Extractor as 🔬 Feature Extractor (extract.py)
-    participant Brain as 🧠 Trained ML Model (final_model.joblib)
-    participant Logger as 📝 Audit Log (predictions.jsonl)
+    actor User as User (Browser)
+    participant UI as Web Page (index.html)
+    participant Server as FastAPI Server (main.py)
+    participant Validator as Validator (schemas.py)
+    participant Extractor as Feature Extractor (extract.py)
+    participant Brain as Trained ML Model (final_model.joblib)
+    participant Logger as Audit Log (predictions.jsonl)
 
     User->>UI: Types URL & clicks "Scan URL"
     UI->>Server: HTTP POST /predict with {"url": "..."}
@@ -266,40 +266,40 @@ Here is a map of the entire project so you know exactly where everything is loca
 
 ```
 phishing-detection-ml/
-├── data/                         <- 📊 Where dataset CSV files are stored
-├── models_saved/                 <- 🧠 Where trained ML models ("brains") are saved
-├── logs/                         <- 📝 Where prediction audit logs are written
-├── notebooks/                    <- 📓 Jupyter notebooks for experiments and charts
-├── reports/figures/              <- 📈 Saved research charts and visualizations
-├── docs/                         <- 📚 In-depth technical papers and empirical studies
-├── tests/                        <- 🧪 Automated tests to verify everything works
-├── src/                          <- 💻 Main Python source code
-│   ├── api/                      <- 🌐 Web server, API routes, and HTML UI
-│   ├── features/                 <- 🔬 Translates URLs into 17 numbers
-│   ├── models/                   <- 🎓 Training and model selection scripts
-│   └── data/                     <- 🧹 Dataset cleaning and preparation
-├── Dockerfile                    <- 🐳 Recipe to run the app in a Docker container
-├── requirements.txt              <- 📦 Python packages needed to run and train
-└── pyproject.toml                <- ⚙️ Project configuration
+├── data/                         <- Where dataset CSV files are stored
+├── models_saved/                 <- Where trained ML models ("brains") are saved
+├── logs/                         <- Where prediction audit logs are written
+├── notebooks/                    <- Jupyter notebooks for experiments and charts
+├── reports/figures/              <- Saved research charts and visualizations
+├── docs/                         <- In-depth technical papers and empirical studies
+├── tests/                        <- Automated tests to verify everything works
+├── src/                          <- Main Python source code
+│   ├── api/                      <- Web server, API routes, and HTML UI
+│   ├── features/                 <- Translates URLs into 17 numbers
+│   ├── models/                   <- Training and model selection scripts
+│   └── data/                     <- Dataset cleaning and preparation
+├── Dockerfile                    <- Recipe to run the app in a Docker container
+├── requirements.txt              <- Python packages needed to run and train
+└── pyproject.toml                <- Project configuration
 ```
 
 #### Detailed Breakdown by Category
 
-#### 🌐 Web Server & User Interface (`src/api/`)
+#### Web Server & User Interface (`src/api/`)
 
 - [`src/api/main.py`](file:///home/hasan/Documents/phishing-detection-ml/src/api/main.py): **The Main Server Hub.** Starts the FastAPI web application, defines the web routes (`/` for the UI, `/health` for system status, `/predict` for scanning URLs), loads the trained model from disk, coordinates feature extraction, and sends back verdicts.
 - [`src/api/static/index.html`](file:///home/hasan/Documents/phishing-detection-ml/src/api/static/index.html): **The Visual Web Page.** The HTML, CSS styling, and JavaScript that you see when opening `http://localhost:8000/`. Provides the input box, buttons, risk gauge, and feature tables.
 - [`src/api/schemas.py`](file:///home/hasan/Documents/phishing-detection-ml/src/api/schemas.py): **The Gatekeeper / Input Validator.** Defines Pydantic data schemas. Ensures incoming URLs are clean, valid strings (rejecting empty or excessively long inputs) and formats the output data.
 - [`src/api/prediction_log.py`](file:///home/hasan/Documents/phishing-detection-ml/src/api/prediction_log.py): **The Audit Logger.** Appends every single scan into `logs/predictions.jsonl` with timestamps, features, and probabilities for future monitoring.
 
-#### 🔬 Feature Engineering & Math (`src/features/`)
+#### Feature Engineering & Math (`src/features/`)
 
 - [`src/features/extract.py`](file:///home/hasan/Documents/phishing-detection-ml/src/features/extract.py): **The Core Translator.** Contains `extract_features(url: str) -> dict`. Takes a raw URL string and computes the 17 numbers. This single file is used both during offline model training and inside the live web API (ensuring 100% consistency with zero bugs).
 - [`src/features/vocab.py`](file:///home/hasan/Documents/phishing-detection-ml/src/features/vocab.py): **The Keyword & TLD Miner.** Analyzes the training dataset to discover which words (e.g. `login`, `bank`) and domain extensions (e.g. `.xyz`) are statistically favored by phishers.
 - [`src/features/build_matrix.py`](file:///home/hasan/Documents/phishing-detection-ml/src/features/build_matrix.py): **The Feature Table Builder.** Runs `extract_features` across hundreds of thousands of URLs to generate `data/train_features.csv` and `data/test_features.csv`.
 - [`src/features/artifacts/`](file:///home/hasan/Documents/phishing-detection-ml/src/features/artifacts/): Holds `suspicious_keywords.json` and `tld_risk.json`—the saved lists of high-risk terms and extensions derived strictly from training data.
 
-#### 🧠 Machine Learning Models (`src/models/` & `models_saved/`)
+#### Machine Learning Models (`src/models/` & `models_saved/`)
 
 - [`src/models/train.py`](file:///home/hasan/Documents/phishing-detection-ml/src/models/train.py): **The Training Script.** Trains and compares multiple ML algorithms (Logistic Regression, Random Forest, and XGBoost) using cross-validation and hyperparameter tuning.
 - [`src/models/train_augmented.py`](file:///home/hasan/Documents/phishing-detection-ml/src/models/train_augmented.py): **Augmented Retraining.** Retrains the Random Forest with realistic deep-linked paths to improve real-world web generalization.
@@ -307,21 +307,21 @@ phishing-detection-ml/
 - [`models_saved/final_model.joblib`](file:///home/hasan/Documents/phishing-detection-ml/models_saved/final_model.joblib): **The Trained Brain File.** The serialized binary containing the trained decision trees loaded by `main.py`. *(Excluded from git to avoid repository bloat and GitHub's 100MB limit; anyone can reproduce it in ~1 minute by running `python -m src.models.train_augmented`)*.
 - [`models_saved/final_model_metadata.json`](file:///home/hasan/Documents/phishing-detection-ml/models_saved/final_model_metadata.json): **Model Configuration & Specs.** Records the active model architecture, hyperparameters, decision threshold, and test accuracy statistics *(tracked in git)*.
 
-#### 📊 Datasets & Data Pipelines (`src/data/` & `data/`)
+#### Datasets & Data Pipelines (`src/data/` & `data/`)
 
 - [`src/data/prepare.py`](file:///home/hasan/Documents/phishing-detection-ml/src/data/prepare.py): **Data Preparation.** Downloads and cleans the raw PhiUSIIL dataset, removes duplicates, and splits it into an 80% training set and 20% test set.
 - [`src/data/augment.py`](file:///home/hasan/Documents/phishing-detection-ml/src/data/augment.py): **Data Augmentation.** Generates synthetic legitimate deep-path links to teach the model that legitimate websites also have paths.
 - [`data/train.csv`](file:///home/hasan/Documents/phishing-detection-ml/data/train.csv) & [`data/test.csv`](file:///home/hasan/Documents/phishing-detection-ml/data/test.csv): The split raw URL datasets (188,296 training links and 50,000 testing links, including 2,926 deep links synthesized from held-out test domains).
 - [`data/train_features.csv`](file:///home/hasan/Documents/phishing-detection-ml/data/train_features.csv) & [`data/test_features.csv`](file:///home/hasan/Documents/phishing-detection-ml/data/test_features.csv): The extracted 17-feature numerical matrices (augmented to 238,296 train and 50,000 test samples).
 
-#### 🧪 Automated Testing (`tests/`)
+#### Automated Testing (`tests/`)
 
 - [`tests/test_api.py`](file:///home/hasan/Documents/phishing-detection-ml/tests/test_api.py): Checks that the web API starts, `/health` reports ok, `/predict` returns accurate verdicts, and bad inputs receive proper `422` error codes.
 - [`tests/test_features.py`](file:///home/hasan/Documents/phishing-detection-ml/tests/test_features.py): Verifies that all 17 features calculate accurately on edge-case URLs (IP addresses, deep paths, weird characters).
 - [`tests/test_model.py`](file:///home/hasan/Documents/phishing-detection-ml/tests/test_model.py): Confirms the saved `.joblib` model file loads cleanly and produces valid probability predictions.
 - [`tests/test_lambda_handler.py`](file:///home/hasan/Documents/phishing-detection-ml/tests/test_lambda_handler.py): Tests compatibility with AWS Lambda serverless execution.
 
-#### 📓 Research, Notebooks & Documentation (`notebooks/`, `reports/`, `docs/`)
+#### Research, Notebooks & Documentation (`notebooks/`, `reports/`, `docs/`)
 
 - [`notebooks/02_eda.ipynb`](file:///home/hasan/Documents/phishing-detection-ml/notebooks/02_eda.ipynb): Exploratory Data Analysis notebook discovering visual patterns between safe and phishing links.
 - [`notebooks/03_evaluation.ipynb`](file:///home/hasan/Documents/phishing-detection-ml/notebooks/03_evaluation.ipynb): Model evaluation notebook graphing ROC curves and confusion matrices.
@@ -329,7 +329,7 @@ phishing-detection-ml/
 - [`reports/figures/`](file:///home/hasan/Documents/phishing-detection-ml/reports/figures/): High-resolution charts generated by the notebooks and displayed in this README.
 - [`docs/RANDOM_FOREST_STUDY.md`](file:///home/hasan/Documents/phishing-detection-ml/docs/RANDOM_FOREST_STUDY.md): Academic-style empirical research paper detailing the Random Forest model architecture, mathematical formulas, and benchmark comparisons.
 
-#### 🐳 Containerization, CI/CD & Cloud (`Dockerfile`, `terraform/`, `.github/`)
+#### Containerization, CI/CD & Cloud (`Dockerfile`, `terraform/`, `.github/`)
 
 - [`Dockerfile`](file:///home/hasan/Documents/phishing-detection-ml/Dockerfile): A recipe that bundles the entire web application and model into a self-contained, lightweight Docker container.
 - [`Dockerfile.lambda`](file:///home/hasan/Documents/phishing-detection-ml/Dockerfile.lambda): Specialized Docker container configuration for AWS Lambda serverless execution.
@@ -598,7 +598,7 @@ Other, secondary limitations (see also the individual caveats already noted inli
 - **Zero Train/Serve Skew**: Reuses `extract_features` from `src.features.extract` unchanged.
 - **Detailed Empirical Study**: See [`docs/RANDOM_FOREST_STUDY.md`](docs/RANDOM_FOREST_STUDY.md) for the in-depth Random Forest empirical evaluation, confusion matrix, feature importance analysis, and literature comparison.
 
-### 🐳 Running with Docker (Recommended)
+### Running with Docker (Recommended)
 
 ```bash
 docker compose up
@@ -607,7 +607,7 @@ docker compose up
 The container automatically checks for the model (training it if needed), starts the server, and serves the dashboard at **`http://localhost:8000/`**.  
 To stop: `docker compose down`.
 
-### 🐍 Running with Python & `manage.py`
+### Running with Python & `manage.py`
 
 ```bash
 python manage.py runserver

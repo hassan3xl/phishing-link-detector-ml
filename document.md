@@ -228,9 +228,9 @@ The Use Case Diagram defines the interactions between human and programmatic act
 
 ```mermaid
 flowchart LR
-    EndUser(["👤 End User"])
-    SecAnalyst(["🛡️ Security Analyst"])
-    ExtClient(["💻 API Client / Bot"])
+    EndUser(["End User"])
+    SecAnalyst(["Security Analyst"])
+    ExtClient(["API Client / Bot"])
 
     subgraph SystemBoundary ["Phishing Detection ML System"]
         UC1(["UC-01: Scan URL via Graphical UI"])
@@ -335,13 +335,13 @@ The Sequence Diagram documents the step-by-step lifecycle and chronological inte
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Client as 🌐 Web Browser / Client
-    participant Controller as ⚙️ API Controller (main.py)
-    participant Validator as 🛡️ Validator (schemas.py)
-    participant Guardrail as 🔍 Guardrail Manager
-    participant Extractor as 🔬 Feature Extractor
-    participant Model as 🧠 Random Forest Model
-    participant Logger as 📝 Audit Logger
+    actor Client as Web Browser / Client
+    participant Controller as API Controller (main.py)
+    participant Validator as Validator (schemas.py)
+    participant Guardrail as Guardrail Manager
+    participant Extractor as Feature Extractor
+    participant Model as Random Forest Model
+    participant Logger as Audit Logger
     
     Client->>Controller: POST /predict {"url": "http://..."}
     Controller->>Validator: Validate Input Schema
